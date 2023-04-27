@@ -1,0 +1,8 @@
+{% load static %}
+{% block title_block %}Homepage{% endblock %}
+    {% block content %}
+        <h1>Welcome To Chinna's Blogs</h1>
+        {% for post in posts %}
+            {{post.title}}
+        {% endfor %}
+    {% endblock %}
