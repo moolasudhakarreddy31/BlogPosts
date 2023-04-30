@@ -3,6 +3,8 @@
     {% block content %}
         <h1>Welcome To Chinna's Blogs</h1>
         {% for post in posts %}
-            {{post.title}}
+            <a href=""><h2>{{post.title}}</h2></a>
+            <p id="data">Published on {{post.Publish}} by {{post.author|title}}</p>
+            {{post.body|truncatewords:30|linebreaks}}
         {% endfor %}
     {% endblock %}
