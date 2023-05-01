@@ -37,7 +37,8 @@ def post_list(request):
 
 
 def post_detail(request,year,month,day,post):
-    post=get_object_or_404(Post,slug=post,
+    post=get_object_or_404(Post,
+                        #    slug=slug,
                            status='published',
                            publish__year=year,
                            publish__month=month,
@@ -45,3 +46,24 @@ def post_detail(request,year,month,day,post):
     
     return render(request,'mediumapp/detailview.html',{'post':post})
 
+
+
+
+
+
+from django.core.mail import send_mail
+from mediumapp.forms import EmailSendForm
+
+def mail_send_view(request,id):
+    post=get_object_or_404(post,id=id,status='published')
+    sent=False
+    if request.method=='POST':
+        form=EmailSendForm(request.POST)
+        if form .is_valid():
+            cd=form.cleaned_data
+            send_mail('subject','message','reddy@blog.com',[cd['to']])
+            sent=True
+
+        else:
+            form=EmailSendForm()
+        return render(request,'mediumapp/sharebymail.html',{'post':post,'form':form,'sent':sent})

@@ -1,0 +1,15 @@
+{% extends 'mediumapp/base.html' %}
+{% block title_block %}Share Post By Email{% endblock %}
+{% block content %}
+<h1>Email Successfully sent..!</h1>
+<h2>Post With The title {{post.title}} information shared by Email</h2>
+{% else %}
+<h1>Share Post With Title :{{post.title}} by Email</h1>
+<form method="POST">
+    {{form.as_p}}
+    {% csrf_token %}
+    <input type="submit" class="btn btn-primary btn-lg" value="Send Mail">
+</form>
+
+{% endif %}
+{% endblock %}
