@@ -22,10 +22,14 @@ from mediumapp import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('listview/',views.post_list),
+    # path('',views.post_list),
+
     path('(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/(?P<post>[-\w]+)/listview/',
 views.post_detail, name='post_detail'),
-    path('<int:pk>/', views.post_detail),
+    # path('<int:pk>/', views.post_detail,),
 
+    # path('listview/<int:pk>/', views.post_detail),
+    # path('detailview/',views.post_detail)
 
 
 ]
